@@ -12,9 +12,9 @@ This repository reproduces the lifted product (LP) codes from the paper "Logical
 
 Here $r_A = n_A - m_A$ is the number of columns minus the number of rows of the $m_A \times n_A$ seed $A$. This is Zheng et al.'s notation. Cain et al. use $r_A$ for the number of rows, which is $m_A$ here. The code $\mathrm{LP}_l(A, A^*)$ has $n = (n_A^2 + m_A^2)\,l$ qubits and $m_A n_A l$ checks of each type, so
 
-$$k = n - \operatorname{rank} H_X - \operatorname{rank} H_Z \ \ge\ (n_A^2 + m_A^2)\,l - 2\,m_A n_A l = r_A^2\,l,$$
+$$k = n - \mathrm{rank}\,H_X - \mathrm{rank}\,H_Z \ \ge\ (n_A^2 + m_A^2)\,l - 2\,m_A n_A l = r_A^2\,l,$$
 
-with equality exactly when both check matrices have full rank. So $r_A^2 l$ is the number of logical qubits the construction guarantees, and $k - r_A^2 l$ is how many more there actually are. That excess equals the number of redundant checks, $(m_A n_A l - \operatorname{rank} H_X) + (m_A n_A l - \operatorname{rank} H_Z)$.
+with equality exactly when both check matrices have full rank. So $r_A^2 l$ is the number of logical qubits the construction guarantees, and $k - r_A^2 l$ is how many more there actually are. That excess equals the number of redundant checks, $(m_A n_A l - \mathrm{rank}\,H_X) + (m_A n_A l - \mathrm{rank}\,H_Z)$.
 
 For all five codes, my $n$ and $k$ equal the reported values, and the CSS condition $H_X H_Z^T = 0 \pmod 2$ holds. The check weights (8 for the 3×5 seed, 10 for the 3×7 seeds) are the stabilizer weights $3+5$ and $3+7$ given by Cain et al., and the qubit degrees match Zheng et al. Tables II and V. None of these depend on $l$.
 
