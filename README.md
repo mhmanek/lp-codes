@@ -2,13 +2,13 @@ This repository reproduces the lifted product (LP) codes from the paper "Logical
 
 ## Results
 
-| code | l | seed A | my n | my k | reported | r_A² l | k − r_A² l | max X-check weight | max Z-check weight | max qubit degree X / Z | reported in |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| toy_2x4_l5 | 5 | 2×4 | 100 | 26 | [[100, 26, 4]] | 20 | 6 | 6 | 6 | 4 / 4 | Zheng et al. Sec. III, Eq. (32) |
-| lp3x5_l33 | 33 | 3×5 | 1122 | 148 | [[1122, 148, ≤20]] | 132 | 16 | 8 | 8 | 5 / 5 | Cain et al. App. A (A3); Zheng et al. Sec. II |
-| lp3x7_l45 | 45 | 3×7 | 2610 | 744 | [[2610, 744, ≤16]] | 720 | 24 | 10 | 10 | 7 / 7 | Cain et al. App. A (A5) |
-| lp3x7_l75 | 75 | 3×7 | 4350 | 1224 | [[4350, 1224, ≤20]] | 1200 | 24 | 10 | 10 | 7 / 7 | Cain et al. App. A (A7); Zheng et al. Sec. II |
-| lp3x7_l91 | 91 | 3×7 | 5278 | 1480 | [[5278, 1480, ≤24]] | 1456 | 24 | 10 | 10 | 7 / 7 | Cain et al. App. A (A9) |
+| code | l | seed A | my n | my k | reported | r_A² l | k − r_A² l | reported in |
+|---|---|---|---|---|---|---|---|---|
+| toy_2x4_l5 | 5 | 2×4 | 100 | 26 | [[100, 26, 4]] | 20 | 6 | Zheng et al. Sec. III, Eq. (32) |
+| lp3x5_l33 | 33 | 3×5 | 1122 | 148 | [[1122, 148, ≤20]] | 132 | 16 | Cain et al. App. A (A3); Zheng et al. Sec. II |
+| lp3x7_l45 | 45 | 3×7 | 2610 | 744 | [[2610, 744, ≤16]] | 720 | 24 | Cain et al. App. A (A5) |
+| lp3x7_l75 | 75 | 3×7 | 4350 | 1224 | [[4350, 1224, ≤20]] | 1200 | 24 | Cain et al. App. A (A7); Zheng et al. Sec. II |
+| lp3x7_l91 | 91 | 3×7 | 5278 | 1480 | [[5278, 1480, ≤24]] | 1456 | 24 | Cain et al. App. A (A9) |
 
 Here $r_A = n_A - m_A$ is the number of columns minus the number of rows of the $m_A \times n_A$ seed $A$. This is Zheng et al.'s notation. Cain et al. use $r_A$ for the number of rows, which is $m_A$ here. The code $\mathrm{LP}_l(A, A^*)$ has $n = (n_A^2 + m_A^2)\,l$ qubits and $m_A n_A l$ checks of each type, so
 
@@ -16,7 +16,7 @@ $$k = n - \mathrm{rank}\,H_X - \mathrm{rank}\,H_Z \ \ge\ (n_A^2 + m_A^2)\,l - 2\
 
 with equality exactly when both check matrices have full rank. So $r_A^2 l$ is the number of logical qubits the construction guarantees, and $k - r_A^2 l$ is how many more there actually are. That excess equals the number of redundant checks, $(m_A n_A l - \mathrm{rank}\,H_X) + (m_A n_A l - \mathrm{rank}\,H_Z)$.
 
-For all five codes, my $n$ and $k$ equal the reported values, and the CSS condition $H_X H_Z^T = 0 \pmod 2$ holds. The check weights (8 for the 3×5 seed, 10 for the 3×7 seeds) are the stabilizer weights $3+5$ and $3+7$ given by Cain et al., and the qubit degrees match Zheng et al. Tables II and V. None of these depend on $l$.
+For all five codes, my $n$ and $k$ equal the reported values, and the CSS condition $H_X H_Z^T = 0 \pmod 2$ holds. The check weights (8 for the 3×5 seed, 10 for the 3×7 seeds) are the stabilizer weights $3+5$ and $3+7$ given by Cain et al., and the qubit degrees (5 for the 3×5 seed, 7 for the 3×7 seeds) match Zheng et al. Tables II and V. None of these depend on $l$.
 
 **Distances are not checked.** The $d$ in the "reported" column is copied from the papers. For the Cain et al. codes it is an upper bound from a numerical search.
 
